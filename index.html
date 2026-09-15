@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D474 // OFFICIAL STORE // DATA THE DESTROYER</title>
     <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             --bg-base: #050508;
@@ -31,7 +34,7 @@
 
         body {
             background-color: var(--bg-base);
-            background-image: 
+            background-image:
                 radial-gradient(circle at 15% 15%, rgba(255, 0, 85, 0.08) 0%, transparent 40%),
                 radial-gradient(circle at 85% 85%, rgba(0, 243, 255, 0.08) 0%, transparent 40%),
                 linear-gradient(180deg, #050508 0%, #0a0a12 100%);
@@ -226,7 +229,7 @@
         }
 
         .btn-admin-icon {
-            background: rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.8);
             border: 1px solid var(--accent-cyan);
             color: #fff;
             width: 32px;
@@ -255,7 +258,7 @@
             background: rgba(10, 10, 18, 0.95);
             backdrop-filter: blur(20px);
             border-left: 1px solid var(--accent-cyan);
-            box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
             z-index: 1001;
             transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
             padding: 2rem;
@@ -290,7 +293,7 @@
         .form-control {
             width: 100%;
             padding: 10px 14px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--glass-border);
             border-radius: 6px;
             color: #fff;
@@ -301,7 +304,7 @@
 
         .form-control:focus {
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 10px rgba(0,243,255,0.2);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
         }
 
         textarea.form-control {
@@ -336,7 +339,7 @@
         }
 
         .btn-secondary:hover {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
         }
 
@@ -371,11 +374,18 @@
         }
 
         @keyframes pulse {
-            0% { opacity: 0.7; }
-            100% { opacity: 1; text-shadow: 0 0 10px var(--accent-magenta); }
+            0% {
+                opacity: 0.7;
+            }
+
+            100% {
+                opacity: 1;
+                text-shadow: 0 0 10px var(--accent-magenta);
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Header Section -->
@@ -412,11 +422,13 @@
         </h2>
         <form id="product-form" onsubmit="handleFormSubmit(event)">
             <input type="hidden" id="prod-id">
-            
+
             <div class="form-group">
                 <label for="prod-link">MagicLink URL</label>
-                <input type="url" id="prod-link" class="form-control" placeholder="https://..." required onchange="autoFetchMetadata(this.value)">
-                <button type="button" class="btn-inline" onclick="autoFetchMetadata(document.getElementById('prod-link').value)">
+                <input type="url" id="prod-link" class="form-control" placeholder="https://..." required
+                    onchange="autoFetchMetadata(this.value)">
+                <button type="button" class="btn-inline"
+                    onclick="autoFetchMetadata(document.getElementById('prod-link').value)">
                     <i class="fa-solid fa-sync"></i> Fetch Link Data
                 </button>
                 <div id="fetch-status" class="fetch-status"></div>
@@ -449,31 +461,31 @@
 
     <script>
         const DEFAULT_INVENTORY = [
-    {
-        id: 'd474-lp-01',
-        link: 'https://buy.stripe.com/your-magic-link-1',
-        title: 'DJ D474 // Cyber Beats Vol. 1 (Digital LP)',
-        description: 'Full lossless FLAC/MP3 download featuring exclusive underground beat tapes and vocal mixes.',
-        price: '$14.99',
-        image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-        id: 'd474-merch-hoodie',
-        link: 'https://buy.stripe.com/your-magic-link-2',
-        title: 'D474 Hologram Heavyweight Hoodie',
-        description: 'Limited run street-apparel with cybernetic reflective graphics. Includes digital track download card.',
-        price: '$65.00',
-        image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-        id: 'd474-mod-vault',
-        link: 'https://buy.stripe.com/your-magic-link-3',
-        title: 'Data The Destroyer // VIP Gaming Vault Access',
-        description: 'Exclusive access to custom mod presets, UI tweaks, and direct strategy guides.',
-        price: '$9.99',
-        image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80'
-    }
-];
+            {
+                id: 'd474-lp-01',
+                link: 'https://buy.stripe.com/your-magic-link-1',
+                title: 'DJ D474 // Cyber Beats Vol. 1 (Digital LP)',
+                description: 'Full lossless FLAC/MP3 download featuring exclusive underground beat tapes and vocal mixes.',
+                price: '$14.99',
+                image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'd474-merch-hoodie',
+                link: 'https://buy.stripe.com/your-magic-link-2',
+                title: 'D474 Hologram Heavyweight Hoodie',
+                description: 'Limited run street-apparel with cybernetic reflective graphics. Includes digital track download card.',
+                price: '$65.00',
+                image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'd474-mod-vault',
+                link: 'https://buy.stripe.com/your-magic-link-3',
+                title: 'Data The Destroyer // VIP Gaming Vault Access',
+                description: 'Exclusive access to custom mod presets, UI tweaks, and direct strategy guides.',
+                price: '$9.99',
+                image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80'
+            }
+        ];
 
         let inventory = [];
         let isAdmin = false;
@@ -481,11 +493,14 @@
         window.addEventListener('DOMContentLoaded', () => {
             const saved = localStorage.getItem('d474_inventory');
             if (saved) {
-                try { inventory = JSON.parse(saved); } catch(e) { inventory = DEFAULT_INVENTORY; }
+                try { inventory = JSON.parse(saved); } catch (e) { inventory = DEFAULT_INVENTORY; }
             } else {
                 inventory = DEFAULT_INVENTORY;
             }
             renderProducts();
+
+            // Check for URL Query Parameters to auto-add item
+            checkUrlQueryParams();
         });
 
         function saveInventory() {
@@ -497,7 +512,7 @@
             const grid = document.getElementById('product-grid');
             grid.innerHTML = '';
 
-            if(inventory.length === 0) {
+            if (inventory.length === 0) {
                 grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-dim); padding: 3rem;">Inventory empty. Toggle Admin Mode to add items.</div>`;
                 return;
             }
@@ -541,8 +556,8 @@
         function openAdminPanel(editId = null) {
             const panel = document.getElementById('admin-panel');
             const form = document.getElementById('product-form');
-            form.reset();
-            
+            if (!editId) form.reset();
+
             if (editId) {
                 const prod = inventory.find(i => i.id === editId);
                 if (prod) {
@@ -563,6 +578,28 @@
 
         function closeAdminPanel() {
             document.getElementById('admin-panel').classList.remove('open');
+        }
+
+        // Parse URL Parameters to trigger automated adding
+        async function checkUrlQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            const addLink = params.get('addLink') || params.get('url') || params.get('link');
+
+            if (addLink) {
+                if (!isAdmin) toggleAdminMode();
+                openAdminPanel();
+
+                document.getElementById('prod-link').value = addLink;
+
+                // Explicit param overrides
+                if (params.get('title')) document.getElementById('prod-title').value = params.get('title');
+                if (params.get('price')) document.getElementById('prod-price').value = params.get('price');
+                if (params.get('desc')) document.getElementById('prod-desc').value = params.get('desc');
+                if (params.get('img')) document.getElementById('prod-img').value = params.get('img');
+
+                // Trigger metadata fetch if missing fields
+                await autoFetchMetadata(addLink);
+            }
         }
 
         // Fetch Raw HTML using multi-proxy resilience
@@ -597,7 +634,7 @@
             throw new Error('All CORS proxies failed to fetch target URL metadata.');
         }
 
-        // Complete Metadata Extraction Pipeline
+        // Metadata Extraction Pipeline
         async function autoFetchMetadata(url) {
             if (!url || !url.startsWith('http')) return;
             const statusEl = document.getElementById('fetch-status');
@@ -610,38 +647,33 @@
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(htmlString, 'text/html');
 
-                // 1. Title Extraction
-                const title = 
+                const title =
                     doc.querySelector('meta[property="og:title"]')?.content ||
                     doc.querySelector('meta[name="twitter:title"]')?.content ||
                     doc.querySelector('title')?.innerText || '';
 
-                // 2. Description Extraction
-                const description = 
+                const description =
                     doc.querySelector('meta[property="og:description"]')?.content ||
                     doc.querySelector('meta[name="twitter:description"]')?.content ||
                     doc.querySelector('meta[name="description"]')?.content || '';
 
-                // 3. Image URL Extraction (and resolving relative paths)
-                let image = 
+                let image =
                     doc.querySelector('meta[property="og:image"]')?.content ||
                     doc.querySelector('meta[name="twitter:image"]')?.content || '';
 
                 if (image && !image.startsWith('http')) {
-                    try { image = new URL(image, url).href; } catch(e) {}
+                    try { image = new URL(image, url).href; } catch (e) { }
                 }
 
-                // 4. Price & Currency Extraction (OG Tags + Schema JSON-LD)
                 let price = '';
                 const ogPrice = doc.querySelector('meta[property="product:price:amount"]')?.content ||
-                                doc.querySelector('meta[property="og:price:amount"]')?.content;
+                    doc.querySelector('meta[property="og:price:amount"]')?.content;
                 const ogCurrency = doc.querySelector('meta[property="product:price:currency"]')?.content ||
-                                   doc.querySelector('meta[property="og:price:currency"]')?.content || '$';
+                    doc.querySelector('meta[property="og:price:currency"]')?.content || '$';
 
                 if (ogPrice) {
                     price = `${ogCurrency}${ogPrice}`;
                 } else {
-                    // Search for JSON-LD structured product data
                     const scripts = doc.querySelectorAll('script[type="application/ld+json"]');
                     for (const script of scripts) {
                         try {
@@ -651,15 +683,14 @@
                                 price = `${offer.priceCurrency || '$'}${offer.price}`;
                                 break;
                             }
-                        } catch(e) {}
+                        } catch (e) { }
                     }
                 }
 
-                // Auto-fill fields if retrieved
-                if (title) document.getElementById('prod-title').value = title;
-                if (description) document.getElementById('prod-desc').value = description;
-                if (image) document.getElementById('prod-img').value = image;
-                if (price) document.getElementById('prod-price').value = price;
+                if (title && !document.getElementById('prod-title').value) document.getElementById('prod-title').value = title;
+                if (description && !document.getElementById('prod-desc').value) document.getElementById('prod-desc').value = description;
+                if (image && !document.getElementById('prod-img').value) document.getElementById('prod-img').value = image;
+                if (price && !document.getElementById('prod-price').value) document.getElementById('prod-price').value = price;
 
                 statusEl.style.color = 'var(--accent-cyan)';
                 statusEl.innerHTML = '<i class="fa-solid fa-check"></i> Metadata successfully extracted!';
@@ -698,7 +729,7 @@
         }
 
         function deleteProduct(id) {
-            if(confirm('Are you sure you want to remove this MagicLink item?')) {
+            if (confirm('Are you sure you want to remove this MagicLink item?')) {
                 inventory = inventory.filter(i => i.id !== id);
                 saveInventory();
             }
@@ -715,4 +746,5 @@
         }
     </script>
 </body>
+
 </html>
