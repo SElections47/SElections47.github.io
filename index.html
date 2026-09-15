@@ -463,27 +463,19 @@
         const DEFAULT_INVENTORY = [
             {
                 id: 'd474-lp-01',
-                link: 'https://buy.stripe.com/your-magic-link-1',
+                link: 'https://buy.stripe.com/test_1',
                 title: 'DJ D474 // Cyber Beats Vol. 1 (Digital LP)',
-                description: 'Full lossless FLAC/MP3 download featuring exclusive underground beat tapes and vocal mixes.',
+                description: 'Full lossless FLAC/MP3 download featuring underground beat tapes and vocal mixes.',
                 price: '$14.99',
                 image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'
             },
             {
                 id: 'd474-merch-hoodie',
-                link: 'https://buy.stripe.com/your-magic-link-2',
+                link: 'https://buy.stripe.com/test_2',
                 title: 'D474 Hologram Heavyweight Hoodie',
                 description: 'Limited run street-apparel with cybernetic reflective graphics. Includes digital track download card.',
                 price: '$65.00',
                 image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80'
-            },
-            {
-                id: 'd474-mod-vault',
-                link: 'https://buy.stripe.com/your-magic-link-3',
-                title: 'Data The Destroyer // VIP Gaming Vault Access',
-                description: 'Exclusive access to custom mod presets, UI tweaks, and direct strategy guides.',
-                price: '$9.99',
-                image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80'
             }
         ];
 
@@ -501,6 +493,13 @@
 
             // Check for URL Query Parameters to auto-add item
             checkUrlQueryParams();
+        });
+
+        // Use modern pagehide listener instead of legacy unload event
+        window.addEventListener('pagehide', () => {
+            if (inventory && inventory.length > 0) {
+                localStorage.setItem('d474_inventory', JSON.stringify(inventory));
+            }
         });
 
         function saveInventory() {
@@ -580,7 +579,6 @@
             document.getElementById('admin-panel').classList.remove('open');
         }
 
-        // Parse URL Parameters to trigger automated adding
         async function checkUrlQueryParams() {
             const params = new URLSearchParams(window.location.search);
             const addLink = params.get('addLink') || params.get('url') || params.get('link');
@@ -591,18 +589,15 @@
 
                 document.getElementById('prod-link').value = addLink;
 
-                // Explicit param overrides
                 if (params.get('title')) document.getElementById('prod-title').value = params.get('title');
                 if (params.get('price')) document.getElementById('prod-price').value = params.get('price');
                 if (params.get('desc')) document.getElementById('prod-desc').value = params.get('desc');
                 if (params.get('img')) document.getElementById('prod-img').value = params.get('img');
 
-                // Trigger metadata fetch if missing fields
                 await autoFetchMetadata(addLink);
             }
         }
 
-        // Fetch Raw HTML using multi-proxy resilience
         async function fetchHtmlWithProxies(targetUrl) {
             const proxies = [
                 url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`,
@@ -634,7 +629,6 @@
             throw new Error('All CORS proxies failed to fetch target URL metadata.');
         }
 
-        // Metadata Extraction Pipeline
         async function autoFetchMetadata(url) {
             if (!url || !url.startsWith('http')) return;
             const statusEl = document.getElementById('fetch-status');
