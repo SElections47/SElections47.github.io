@@ -340,6 +340,24 @@
             color: #fff;
         }
 
+        .btn-inline {
+            background: rgba(0, 243, 255, 0.15);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            margin-top: 6px;
+            font-family: 'Orbitron', sans-serif;
+            transition: var(--transition-speed);
+        }
+
+        .btn-inline:hover {
+            background: var(--accent-cyan);
+            color: #000;
+        }
+
         .fetch-status {
             font-size: 0.8rem;
             margin-top: 0.4rem;
@@ -347,7 +365,6 @@
             display: none;
         }
 
-        /* Glitch effect on header */
         .glitch-sub {
             color: var(--accent-magenta);
             animation: pulse 2s infinite alternate;
@@ -398,8 +415,11 @@
             
             <div class="form-group">
                 <label for="prod-link">MagicLink URL</label>
-                <input type="url" id="prod-link" class="form-control" placeholder="https://buy.stripe.com/..." required onchange="autoFetchMetadata(this.value)">
-                <div id="fetch-status" class="fetch-status"><i class="fa-solid fa-spinner fa-spin"></i> Fetching link metadata...</div>
+                <input type="url" id="prod-link" class="form-control" placeholder="https://..." required onchange="autoFetchMetadata(this.value)">
+                <button type="button" class="btn-inline" onclick="autoFetchMetadata(document.getElementById('prod-link').value)">
+                    <i class="fa-solid fa-sync"></i> Fetch Link Data
+                </button>
+                <div id="fetch-status" class="fetch-status"></div>
             </div>
 
             <div class="form-group">
@@ -409,11 +429,11 @@
 
             <div class="form-group">
                 <label for="prod-desc">Description</label>
-                <textarea id="prod-desc" class="form-control" placeholder="Item details, track info, or merch spec..."></textarea>
+                <textarea id="prod-desc" class="form-control" placeholder="Item details..."></textarea>
             </div>
 
             <div class="form-group">
-                <label for="prod-price">Price Display (e.g. $19.99)</label>
+                <label for="prod-price">Price Display</label>
                 <input type="text" id="prod-price" class="form-control" placeholder="$0.00" required>
             </div>
 
@@ -428,30 +448,36 @@
     </div>
 
     <script>
-        // Default seed inventory in case local storage is empty
         const DEFAULT_INVENTORY = [
-            {
-                id: '1',
-                link: 'https://buy.stripe.com/test_1',
-                title: 'Data The Destroyer - Cyber Beats Vol 1',
-                description: 'Exclusive digital LP download featuring underground synthwave tracks by DJ D474.',
-                price: '$14.99',
-                image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'
-            },
-            {
-                id: '2',
-                link: 'https://buy.stripe.com/test_2',
-                title: 'D474 Official Hologram Hoodie',
-                description: 'Limited edition ultra-heavyweight cybernetic street apparel.',
-                price: '$65.00',
-                image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80'
-            }
-        ];
+    {
+        id: 'd474-lp-01',
+        link: 'https://buy.stripe.com/your-magic-link-1',
+        title: 'DJ D474 // Cyber Beats Vol. 1 (Digital LP)',
+        description: 'Full lossless FLAC/MP3 download featuring exclusive underground beat tapes and vocal mixes.',
+        price: '$14.99',
+        image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+        id: 'd474-merch-hoodie',
+        link: 'https://buy.stripe.com/your-magic-link-2',
+        title: 'D474 Hologram Heavyweight Hoodie',
+        description: 'Limited run street-apparel with cybernetic reflective graphics. Includes digital track download card.',
+        price: '$65.00',
+        image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+        id: 'd474-mod-vault',
+        link: 'https://buy.stripe.com/your-magic-link-3',
+        title: 'Data The Destroyer // VIP Gaming Vault Access',
+        description: 'Exclusive access to custom mod presets, UI tweaks, and direct strategy guides.',
+        price: '$9.99',
+        image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80'
+    }
+];
 
         let inventory = [];
         let isAdmin = false;
 
-        // Initialize Store
         window.addEventListener('DOMContentLoaded', () => {
             const saved = localStorage.getItem('d474_inventory');
             if (saved) {
@@ -462,13 +488,11 @@
             renderProducts();
         });
 
-        // Save Store Data to LocalStorage
         function saveInventory() {
             localStorage.setItem('d474_inventory', JSON.stringify(inventory));
             renderProducts();
         }
 
-        // Render Product Grid
         function renderProducts() {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = '';
@@ -506,7 +530,6 @@
             });
         }
 
-        // Toggle Admin Mode
         function toggleAdminMode() {
             isAdmin = !isAdmin;
             document.body.classList.toggle('admin-active', isAdmin);
@@ -515,7 +538,6 @@
             document.getElementById('export-btn').style.display = isAdmin ? 'inline-flex' : 'none';
         }
 
-        // Admin Panel Controls
         function openAdminPanel(editId = null) {
             const panel = document.getElementById('admin-panel');
             const form = document.getElementById('product-form');
@@ -543,45 +565,111 @@
             document.getElementById('admin-panel').classList.remove('open');
         }
 
-        // Auto Fetch Metadata from MagicLink URL
+        // Fetch Raw HTML using multi-proxy resilience
+        async function fetchHtmlWithProxies(targetUrl) {
+            const proxies = [
+                url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`,
+                url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
+                url => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`
+            ];
+
+            for (const getProxyUrl of proxies) {
+                try {
+                    const proxyUrl = getProxyUrl(targetUrl);
+                    const res = await fetch(proxyUrl);
+                    if (!res.ok) continue;
+
+                    let htmlText = '';
+                    if (proxyUrl.includes('allorigins')) {
+                        const json = await res.json();
+                        htmlText = json.contents;
+                    } else {
+                        htmlText = await res.text();
+                    }
+
+                    if (htmlText && htmlText.length > 50) {
+                        return htmlText;
+                    }
+                } catch (e) {
+                    console.warn('Proxy failed, trying next...', e);
+                }
+            }
+            throw new Error('All CORS proxies failed to fetch target URL metadata.');
+        }
+
+        // Complete Metadata Extraction Pipeline
         async function autoFetchMetadata(url) {
-            if(!url || !url.startsWith('http')) return;
+            if (!url || !url.startsWith('http')) return;
             const statusEl = document.getElementById('fetch-status');
             statusEl.style.display = 'block';
+            statusEl.style.color = 'var(--accent-gold)';
+            statusEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Parsing link metadata...';
 
             try {
-                // Using AllOrigins CORS Proxy to fetch page HTML
-                const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
-                const response = await fetch(proxyUrl);
-                const data = await response.json();
+                const htmlString = await fetchHtmlWithProxies(url);
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlString, 'text/html');
 
-                if (data.contents) {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(data.contents, 'text/html');
+                // 1. Title Extraction
+                const title = 
+                    doc.querySelector('meta[property="og:title"]')?.content ||
+                    doc.querySelector('meta[name="twitter:title"]')?.content ||
+                    doc.querySelector('title')?.innerText || '';
 
-                    // Extract Open Graph or standard HTML tags
-                    const ogTitle = doc.querySelector('meta[property="og:title"]')?.content || doc.title;
-                    const ogDesc = doc.querySelector('meta[property="og:description"]')?.content || doc.querySelector('meta[name="description"]')?.content;
-                    const ogImage = doc.querySelector('meta[property="og:image"]')?.content;
+                // 2. Description Extraction
+                const description = 
+                    doc.querySelector('meta[property="og:description"]')?.content ||
+                    doc.querySelector('meta[name="twitter:description"]')?.content ||
+                    doc.querySelector('meta[name="description"]')?.content || '';
 
-                    if (ogTitle && !document.getElementById('prod-title').value) {
-                        document.getElementById('prod-title').value = ogTitle;
-                    }
-                    if (ogDesc && !document.getElementById('prod-desc').value) {
-                        document.getElementById('prod-desc').value = ogDesc;
-                    }
-                    if (ogImage && !document.getElementById('prod-img').value) {
-                        document.getElementById('prod-img').value = ogImage;
+                // 3. Image URL Extraction (and resolving relative paths)
+                let image = 
+                    doc.querySelector('meta[property="og:image"]')?.content ||
+                    doc.querySelector('meta[name="twitter:image"]')?.content || '';
+
+                if (image && !image.startsWith('http')) {
+                    try { image = new URL(image, url).href; } catch(e) {}
+                }
+
+                // 4. Price & Currency Extraction (OG Tags + Schema JSON-LD)
+                let price = '';
+                const ogPrice = doc.querySelector('meta[property="product:price:amount"]')?.content ||
+                                doc.querySelector('meta[property="og:price:amount"]')?.content;
+                const ogCurrency = doc.querySelector('meta[property="product:price:currency"]')?.content ||
+                                   doc.querySelector('meta[property="og:price:currency"]')?.content || '$';
+
+                if (ogPrice) {
+                    price = `${ogCurrency}${ogPrice}`;
+                } else {
+                    // Search for JSON-LD structured product data
+                    const scripts = doc.querySelectorAll('script[type="application/ld+json"]');
+                    for (const script of scripts) {
+                        try {
+                            const data = JSON.parse(script.innerText);
+                            const offer = data.offers || (Array.isArray(data) ? data[0]?.offers : null);
+                            if (offer && offer.price) {
+                                price = `${offer.priceCurrency || '$'}${offer.price}`;
+                                break;
+                            }
+                        } catch(e) {}
                     }
                 }
+
+                // Auto-fill fields if retrieved
+                if (title) document.getElementById('prod-title').value = title;
+                if (description) document.getElementById('prod-desc').value = description;
+                if (image) document.getElementById('prod-img').value = image;
+                if (price) document.getElementById('prod-price').value = price;
+
+                statusEl.style.color = 'var(--accent-cyan)';
+                statusEl.innerHTML = '<i class="fa-solid fa-check"></i> Metadata successfully extracted!';
             } catch (err) {
-                console.warn('Metadata auto-fetch bypassed:', err);
-            } finally {
-                statusEl.style.display = 'none';
+                console.error(err);
+                statusEl.style.color = 'var(--accent-magenta)';
+                statusEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Could not auto-read link. Please fill manually.';
             }
         }
 
-        // Form Submission
         function handleFormSubmit(e) {
             e.preventDefault();
             const id = document.getElementById('prod-id').value || Date.now().toString();
@@ -616,7 +704,6 @@
             }
         }
 
-        // Export Inventory to JSON for committing directly to repository source code
         function exportConfig() {
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(inventory, null, 4));
             const downloadAnchor = document.createElement('a');
