@@ -43,7 +43,8 @@
             font-family: 'Space Grotesk', sans-serif;
             min-height: 100vh;
             overflow-x: hidden;
-            padding-bottom: 80px;
+            display: flex;
+            flex-direction: column;
         }
 
         /* --- Header / Hero --- */
@@ -82,6 +83,7 @@
             max-width: 1300px;
             margin: 2rem auto 0;
             padding: 0 2rem;
+            width: 100%;
         }
 
         .section-title {
@@ -145,7 +147,8 @@
         .store-controls {
             max-width: 1300px;
             margin: 2rem auto 0;
-            padding: 0 2rem;
+            padding: 1rem 1.5rem;
+            width: 100%;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -154,7 +157,6 @@
             background: var(--panel-bg);
             border: 1px solid var(--glass-border);
             border-radius: 12px;
-            padding: 1rem 1.5rem;
             backdrop-filter: blur(10px);
         }
 
@@ -207,6 +209,8 @@
             max-width: 1300px;
             margin: 2rem auto;
             padding: 0 2rem;
+            width: 100%;
+            flex-grow: 1;
         }
 
         .grid {
@@ -365,6 +369,7 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
+            width: 100%;
         }
 
         .page-btn {
@@ -580,6 +585,110 @@
                 text-shadow: 0 0 10px var(--accent-magenta);
             }
         }
+
+        /* --- Footer Section --- */
+        footer {
+            margin-top: auto;
+            background: rgba(5, 5, 8, 0.95);
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: var(--text-main);
+        }
+
+        .footer-brand span {
+            color: var(--accent-cyan);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .social-btn:hover {
+            color: #000;
+            background: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
+            box-shadow: 0 0 15px var(--accent-cyan);
+        }
+
+        .social-btn.yt:hover {
+            background: #ff0000;
+            border-color: #ff0000;
+            box-shadow: 0 0 15px #ff0000;
+            color: #fff;
+        }
+
+        .social-btn.tw:hover {
+            background: #1da1f2;
+            border-color: #1da1f2;
+            box-shadow: 0 0 15px #1da1f2;
+            color: #fff;
+        }
+
+        .social-btn.ig:hover {
+            background: #e1306c;
+            border-color: #e1306c;
+            box-shadow: 0 0 15px #e1306c;
+            color: #fff;
+        }
+
+        .social-btn.dc:hover {
+            background: #5865f2;
+            border-color: #5865f2;
+            box-shadow: 0 0 15px #5865f2;
+            color: #fff;
+        }
+
+        .social-btn.twch:hover {
+            background: #9146ff;
+            border-color: #9146ff;
+            box-shadow: 0 0 15px #9146ff;
+            color: #fff;
+        }
+
+        .copyright {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
     </style>
 </head>
 
@@ -626,6 +735,44 @@
     <div class="pagination-bar" id="pagination-bar">
         <!-- Dynamic Page Numbers Render Here -->
     </div>
+
+    <!-- Footer Section with Social Media Buttons -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span>D474</span> // OFFICIAL NETWORK
+            </div>
+
+            <div class="social-links">
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn yt"
+                    title="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-btn tw"
+                    title="X / Twitter">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn ig"
+                    title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="social-btn dc"
+                    title="Discord">
+                    <i class="fa-brands fa-discord"></i>
+                </a>
+                <a href="https://twitch.tv" target="_blank" rel="noopener noreferrer" class="social-btn twch"
+                    title="Twitch">
+                    <i class="fa-brands fa-twitch"></i>
+                </a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn"
+                    title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+
+            <p class="copyright">&copy; 2026 D474 // DATA THE DESTROYER. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
 
     <!-- Floating Admin Bar -->
     <div class="admin-bar">
@@ -723,9 +870,9 @@
             /*
             const saved = localStorage.getItem('d474_inventory');
             if (saved) {
-                try { inventory = JSON.parse(saved); } catch (e) { inventory = DEFAULT_INVENTORY; }
+            try { inventory = JSON.parse(saved); } catch (e) { inventory = DEFAULT_INVENTORY; }
             } else {
-                inventory = DEFAULT_INVENTORY;
+            inventory = DEFAULT_INVENTORY;
             }
             */
 
@@ -737,7 +884,6 @@
             checkUrlQueryParams();
         });
 
-        // Use modern pagehide listener instead of deprecated unload event
         window.addEventListener('pagehide', () => {
             if (inventory && inventory.length > 0) {
                 localStorage.setItem('d474_inventory', JSON.stringify(inventory));
@@ -833,7 +979,6 @@
             const grid = document.getElementById('product-grid');
             grid.innerHTML = '';
 
-            // Filter by category
             const filtered = selectedCategory === 'All'
                 ? inventory
                 : inventory.filter(i => (i.category || 'General') === selectedCategory);
@@ -844,14 +989,12 @@
                 return;
             }
 
-            // Paginate items
             const totalPages = Math.ceil(filtered.length / itemsPerPage);
             if (currentPage > totalPages) currentPage = totalPages;
 
             const startIndex = (currentPage - 1) * itemsPerPage;
             const paginatedItems = filtered.slice(startIndex, startIndex + itemsPerPage);
 
-            // Render items
             paginatedItems.forEach((item) => {
                 const card = document.createElement('div');
                 card.className = 'card';
@@ -890,7 +1033,6 @@
 
             if (totalPages <= 1) return;
 
-            // Previous Button
             const prevBtn = document.createElement('button');
             prevBtn.className = 'page-btn';
             prevBtn.innerHTML = '<i class="fa-solid fa-chevron-left"></i>';
@@ -898,7 +1040,6 @@
             prevBtn.onclick = () => { currentPage--; renderProducts(); };
             paginationBar.appendChild(prevBtn);
 
-            // Page Number Buttons
             for (let i = 1; i <= totalPages; i++) {
                 const pageBtn = document.createElement('button');
                 pageBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
@@ -907,7 +1048,6 @@
                 paginationBar.appendChild(pageBtn);
             }
 
-            // Next Button
             const nextBtn = document.createElement('button');
             nextBtn.className = 'page-btn';
             nextBtn.innerHTML = '<i class="fa-solid fa-chevron-right"></i>';
