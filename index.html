@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D474 // OFFICIAL STORE // DATA THE DESTROYER</title>
     <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             --bg-base: #050508;
@@ -31,7 +34,7 @@
 
         body {
             background-color: var(--bg-base);
-            background-image: 
+            background-image:
                 radial-gradient(circle at 15% 15%, rgba(255, 0, 85, 0.08) 0%, transparent 40%),
                 radial-gradient(circle at 85% 85%, rgba(0, 243, 255, 0.08) 0%, transparent 40%),
                 linear-gradient(180deg, #050508 0%, #0a0a12 100%);
@@ -99,7 +102,7 @@
             overflow-x: auto;
             padding-bottom: 1rem;
             scrollbar-width: thin;
-            scrollbar-color: var(--accent-cyan) rgba(255,255,255,0.05);
+            scrollbar-color: var(--accent-cyan) rgba(255, 255, 255, 0.05);
         }
 
         .featured-carousel::-webkit-scrollbar {
@@ -192,7 +195,8 @@
             transition: var(--transition-speed);
         }
 
-        .pill.active, .pill:hover {
+        .pill.active,
+        .pill:hover {
             background: rgba(0, 243, 255, 0.15);
             border-color: var(--accent-cyan);
             color: var(--accent-cyan);
@@ -329,7 +333,7 @@
         }
 
         .btn-admin-icon {
-            background: rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.8);
             border: 1px solid var(--accent-cyan);
             color: #fff;
             width: 32px;
@@ -437,7 +441,7 @@
             background: rgba(10, 10, 18, 0.95);
             backdrop-filter: blur(20px);
             border-left: 1px solid var(--accent-cyan);
-            box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
             z-index: 1001;
             transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
             padding: 2rem;
@@ -472,7 +476,7 @@
         .form-control {
             width: 100%;
             padding: 10px 14px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--glass-border);
             border-radius: 6px;
             color: #fff;
@@ -483,7 +487,7 @@
 
         .form-control:focus {
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 10px rgba(0,243,255,0.2);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
         }
 
         textarea.form-control {
@@ -532,7 +536,7 @@
         }
 
         .btn-secondary:hover {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
         }
 
@@ -567,11 +571,18 @@
         }
 
         @keyframes pulse {
-            0% { opacity: 0.7; }
-            100% { opacity: 1; text-shadow: 0 0 10px var(--accent-magenta); }
+            0% {
+                opacity: 0.7;
+            }
+
+            100% {
+                opacity: 1;
+                text-shadow: 0 0 10px var(--accent-magenta);
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Header Section -->
@@ -582,7 +593,8 @@
 
     <!-- Featured Showcase Carousel -->
     <section class="featured-section" id="featured-section" style="display: none;">
-        <h2 class="section-title"><i class="fa-solid fa-star"></i> Featured Showcase (<span id="featured-count">0</span>/7)</h2>
+        <h2 class="section-title"><i class="fa-solid fa-star"></i> Featured Showcase (<span
+                id="featured-count">0</span>/7)</h2>
         <div class="featured-carousel" id="featured-carousel">
             <!-- Featured items render here -->
         </div>
@@ -636,11 +648,13 @@
         </h2>
         <form id="product-form" onsubmit="handleFormSubmit(event)">
             <input type="hidden" id="prod-id">
-            
+
             <div class="form-group">
                 <label for="prod-link">MagicLink URL</label>
-                <input type="url" id="prod-link" class="form-control" placeholder="https://..." required onchange="autoFetchMetadata(this.value)">
-                <button type="button" class="btn-inline" onclick="autoFetchMetadata(document.getElementById('prod-link').value)">
+                <input type="url" id="prod-link" class="form-control" placeholder="https://..." required
+                    onchange="autoFetchMetadata(this.value)">
+                <button type="button" class="btn-inline"
+                    onclick="autoFetchMetadata(document.getElementById('prod-link').value)">
                     <i class="fa-solid fa-sync"></i> Fetch Link Data
                 </button>
                 <div id="fetch-status" class="fetch-status"></div>
@@ -653,7 +667,8 @@
 
             <div class="form-group">
                 <label for="prod-category">Category</label>
-                <input type="text" id="prod-category" class="form-control" placeholder="Digital / Apparel / Hardware / Music" required>
+                <input type="text" id="prod-category" class="form-control"
+                    placeholder="Digital / Apparel / Hardware / Music" required>
             </div>
 
             <div class="form-group">
@@ -683,18 +698,19 @@
 
     <script>
         const DEFAULT_INVENTORY = [
-            { id: 'd474-01', link: 'https://buy.stripe.com/test_1', title: 'DJ D474 // Cyber Beats Vol. 1', category: 'Music', description: 'Lossless FLAC beat tapes with raw 808s and synthwave textures.', price: '$14.99', featured: true, image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-02', link: 'https://buy.stripe.com/test_2', title: 'D474 Hologram Heavyweight Hoodie', category: 'Apparel', description: 'Limited run street-apparel with cybernetic reflective graphics.', price: '$65.00', featured: true, image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-03', link: 'https://buy.stripe.com/test_3', title: 'Destroyer Neon Headset Stand', category: 'Hardware', description: 'Custom acrylic headphone desk mount with ambient RGB glowing base.', price: '$39.99', featured: true, image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-04', link: 'https://buy.stripe.com/test_4', title: 'Cyberpunk Sound Effects Vault', category: 'Digital', description: 'Over 500+ royalty-free futuristic sfx, glitches, and impact sounds.', price: '$29.99', featured: true, image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-05', link: 'https://buy.stripe.com/test_5', title: 'D474 Anodized Aluminum Keycap', category: 'Hardware', description: 'Custom CNC crafted keycap featuring the iconic D474 emblem.', price: '$19.99', featured: true, image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-06', link: 'https://buy.stripe.com/test_6', title: 'DJ D474 // Underground Mixtape Tape', category: 'Music', description: 'Collector edition cassette tape loaded with synth-heavy rap instrumentals.', price: '$22.00', featured: true, image: 'https://images.unsplash.com/photo-1539375665275-f9de415ef9ac?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-07', link: 'https://buy.stripe.com/test_7', title: 'Data Destroyer Desk Mat (Large)', category: 'Hardware', description: 'Ultra-smooth anti-slip stitching mat featuring custom PCB circuitry graphics.', price: '$34.50', featured: true, image: 'https://images.unsplash.com/photo-1616440342855-430b2019942a?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-08', link: 'https://buy.stripe.com/test_8', title: 'D474 Cyber Visor Glasses', category: 'Apparel', description: 'LED animated futuristic glasses programed with equalizer presets.', price: '$45.00', featured: false, image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-09', link: 'https://buy.stripe.com/test_9', title: '3D Cyberpunk Video Overlay Pack', category: 'Digital', description: '4K motion graphic loops and lower-thirds for livestreamers and video creators.', price: '$25.00', featured: false, image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-10', link: 'https://buy.stripe.com/test_10', title: 'D474 Glow-in-the-Dark Snapback', category: 'Apparel', description: '3D embroidered snapback cap designed for late-night rave stages.', price: '$30.00', featured: false, image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-11', link: 'https://buy.stripe.com/test_11', title: 'Synthetic Horizons Audio Plugin Presets', category: 'Digital', description: 'Preset expansion pack for Serum and Vital synthesizers.', price: '$18.00', featured: false, image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-12', link: 'https://buy.stripe.com/test_12', title: 'D474 Insulated Metal Water Bottle', category: 'Hardware', description: 'Matte black double-walled vacuum bottle with laser-etched D474 branding.', price: '$28.00', featured: false, image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=800&q=80' }
+            { id: 'd474-01', link: 'https: //buy.stripe.com/test_1', title: 'DJ D474 // Cyber Beats Vol. 1', category: 'Music', description: 'Lossless FLAC beat tapes with raw 808s and synthwave textures.', price: '$14.99', featured: true, image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80' },
+            { id: 'd474-02', link: 'https: //buy.stripe.com/test_2', title: 'D474 Hologram Heavyweight Hoodie', category: 'Apparel', description: 'Limited run street-apparel with cybernetic reflective graphics.', price: '$65.00', featured: true, image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80' },
+            { id: 'd474-03', link: 'https: //buy.stripe.com/test_3', title: 'Destroyer Neon Headset Stand', category: 'Hardware', description: 'Custom acrylic headphone desk mount with ambient RGB glowing base.', price: '$39.99', featured: true, image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80' },
+            { id: 'd474-04', link: 'https: //buy.stripe.com/test_4', title: 'Cyberpunk Sound Effects Vault', category: 'Digital', description: 'Over 500+ royalty-free futuristic sfx, glitches, and impact sounds.', price: '$29.99', featured: true, image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80' },
+            { id: 'd474-05', link: 'https: //buy.stripe.com/test_5', title: 'D474 Anodized Aluminum Keycap', category: 'Hardware', description: 'Custom CNC crafted keycap featuring the iconic D474 emblem.', price: '$19.99', featured: true, image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80' },
+            { id: 'd474-06', link: 'https: //buy.stripe.com/test_6', title: 'DJ D474 // Underground Mixtape Tape', category: 'Music', description: 'Collector edition cassette tape loaded with synth-heavy rap instrumentals.', price: '$22.00', featured: true, image: 'https://images.unsplash.com/photo-1539375665275-f9de415ef9ac?auto=format&fit=crop&w=800&q=80' },
+            { id: 'd474-07', link: 'https: //buy.stripe.com/test_7', title: 'Data Destroyer Desk Mat (Large)', category: 'Hardware', description: 'Ultra-smooth anti-slip stitching mat featuring custom PCB circuitry graphics.', price: '$34.50', featured: true, image: 'https://images.unsplash.com/photo-1616440342855-430b2019942a?auto=format&fit=crop&w=800&q=80' },
+            { id: 'd474-08', link: 'https: //buy.stripe.com/test_8', title: 'D474 Cyber Visor Glasses', category: 'Apparel', description: 'LED animated futuristic glasses programed with equalizer presets.', price: '$45.00', featured: false, image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80' },
+            { id: 'd474-09', link: 'https: //buy.stripe.com/test_9', title: '3D Cyberpunk Video Overlay Pack', category: 'Digital', description: '4K motion graphic loops and lower-thirds for livestreamers and video creators.', price: '$25.00', featured: false, image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80' },
+            { id: 'd474-10', link: 'https: //buy.stripe.com/test_10', title: 'D474 Glow-in-the-Dark Snapback', category: 'Apparel', description: '3D embroidered snapback cap designed for late-night rave stages.', price: '$30.00', featured: false, image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80' },
+            { id: 'd474-11', link: 'https: //buy.stripe.com/test_11', title: 'Synthetic Horizons Audio Plugin Presets', category: 'Digital', description: 'Preset expansion pack for Serum and Vital synthesizers.', price: '$18.00', featured: false, image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80' },
+            { id: 'd474-12', link: 'https: //buy.stripe.com/test_12', title: 'D474 Insulated Metal Water Bottle', category: 'Hardware', description: 'Matte black double-walled vacuum bottle with laser-etched D474 branding.', price: '$28.00', featured: false, image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=800&q=80' },
+            { id: 'd474-13', link: 'https: //buy.stripe.com/test_13', title: 'Data The Destroyer // VIP Gaming Vault Access', category: 'Digital', description: 'Exclusive access to custom mod presets, UI tweaks, and direct strategy guides.', price: '$9.99', featured: false, image: 'https: //images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80' }
         ];
 
         let inventory = [];
@@ -704,13 +720,17 @@
         let isAdmin = false;
 
         window.addEventListener('DOMContentLoaded', () => {
+            /*
             const saved = localStorage.getItem('d474_inventory');
             if (saved) {
-                try { inventory = JSON.parse(saved); } catch(e) { inventory = DEFAULT_INVENTORY; }
+                try { inventory = JSON.parse(saved); } catch (e) { inventory = DEFAULT_INVENTORY; }
             } else {
                 inventory = DEFAULT_INVENTORY;
             }
-            
+            */
+
+            inventory = DEFAULT_INVENTORY;
+
             renderFeatured();
             renderCategories();
             renderProducts();
@@ -788,7 +808,7 @@
         function renderCategories() {
             const categoryContainer = document.getElementById('category-pills');
             const categories = ['All', ...new Set(inventory.map(item => item.category || 'General'))];
-            
+
             categoryContainer.innerHTML = categories.map(cat => `
                 <button class="pill ${cat === selectedCategory ? 'active' : ''}" onclick="selectCategory('${cat}')">
                     ${cat}
@@ -814,8 +834,8 @@
             grid.innerHTML = '';
 
             // Filter by category
-            const filtered = selectedCategory === 'All' 
-                ? inventory 
+            const filtered = selectedCategory === 'All'
+                ? inventory
                 : inventory.filter(i => (i.category || 'General') === selectedCategory);
 
             if (filtered.length === 0) {
@@ -907,8 +927,8 @@
         function openAdminPanel(editId = null) {
             const panel = document.getElementById('admin-panel');
             const form = document.getElementById('product-form');
-            if(!editId) form.reset();
-            
+            if (!editId) form.reset();
+
             if (editId) {
                 const prod = inventory.find(i => i.id === editId);
                 if (prod) {
@@ -997,29 +1017,29 @@
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(htmlString, 'text/html');
 
-                const title = 
+                const title =
                     doc.querySelector('meta[property="og:title"]')?.content ||
                     doc.querySelector('meta[name="twitter:title"]')?.content ||
                     doc.querySelector('title')?.innerText || '';
 
-                const description = 
+                const description =
                     doc.querySelector('meta[property="og:description"]')?.content ||
                     doc.querySelector('meta[name="twitter:description"]')?.content ||
                     doc.querySelector('meta[name="description"]')?.content || '';
 
-                let image = 
+                let image =
                     doc.querySelector('meta[property="og:image"]')?.content ||
                     doc.querySelector('meta[name="twitter:image"]')?.content || '';
 
                 if (image && !image.startsWith('http')) {
-                    try { image = new URL(image, url).href; } catch(e) {}
+                    try { image = new URL(image, url).href; } catch (e) { }
                 }
 
                 let price = '';
                 const ogPrice = doc.querySelector('meta[property="product:price:amount"]')?.content ||
-                                doc.querySelector('meta[property="og:price:amount"]')?.content;
+                    doc.querySelector('meta[property="og:price:amount"]')?.content;
                 const ogCurrency = doc.querySelector('meta[property="product:price:currency"]')?.content ||
-                                   doc.querySelector('meta[property="og:price:currency"]')?.content || '$';
+                    doc.querySelector('meta[property="og:price:currency"]')?.content || '$';
 
                 if (ogPrice) {
                     price = `${ogCurrency}${ogPrice}`;
@@ -1033,7 +1053,7 @@
                                 price = `${offer.priceCurrency || '$'}${offer.price}`;
                                 break;
                             }
-                        } catch(e) {}
+                        } catch (e) { }
                     }
                 }
 
@@ -1091,7 +1111,7 @@
         }
 
         function deleteProduct(id) {
-            if(confirm('Are you sure you want to remove this MagicLink item?')) {
+            if (confirm('Are you sure you want to remove this MagicLink item?')) {
                 inventory = inventory.filter(i => i.id !== id);
                 saveInventory();
             }
@@ -1108,4 +1128,5 @@
         }
     </script>
 </body>
+
 </html>
