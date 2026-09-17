@@ -2,9 +2,26 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEG38QZQPY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-TEG38QZQPY');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D474 // OFFICIAL STORE // DATA THE DESTROYER</title>
+    <meta name="description"
+        content="SElections47 // The Official Store of Data The Destroyer & DJ D474 The Rapper. Explore exclusive music, apparel, hardware, and digital products curated by D474designs.">
+    <meta name="author" content="D474designs">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+        content="games, video games, free games, online games, browser games, free game, game, miniclip, ugotgames, you got games, yougotgames, flash games, flash, d474, d474media, d474designs, data the destroyer, d474th3d357r0y3r, money, income, passive income, refferals, reffer, refferer, ads, links, work from home, steady income, start your own business, graphic design, seo, get paid, job, internet, advertisement, rich, dollars, work, daily, every day, get paid everyday, thathill, thathill.webs.com, https://thathill.webs.com, emoneyspace, emoneyspace.com/d474, emoneyspace.com, https://www.emoneyspace.com, grind, collect, collect money, collect money from home, influencer, how to make money as an influencer, how to create a passive income, part-time job, part time, part time job, how to start a business from home, how to start a business, d474, d474media, d474designs, data the destroyer, d474th3d357r0y3r, media company, online media, original content, representation, agent, online media company, advertisement, promotion, get noticed, ads, post ads, professional, professional advertisement service, professional advertisement firm, ad firm, advertisement firm, promotion firm, go viral, viral promotion, viral promotion firm, media firm, media agency, mass media, worldwide, global, world wide, world-wide advertisement, global advertisement, social media advertisement, social media promotion, social, influencer, how to make money as an influencer, how to gain a following, instagram, facebook, snapchat, tumblr, wordpress, blog, vlog, youtube, youtube channel, youtube channel promotion, youtube channel advertisement, grow my youtube, grow my youtube channel, grow my social media, grow my instagram, d474, d474media, d474designs, data the destroyer, d474th3d357r0y3r, datadesigns, datamedia, data, designer, design, designs, sound engineer, sound engineering, audio, audio production, graphic design, graphics, dj, dj data, dj d474, video, photo, photography, video work, videography, choreography, director, directing, acting, actor, writer, ghost writer, musician, artist, production, producer, beats, beat, rap, concert, rave, d474designs.webs.com, https://d474designs.webs.com, d474forex, that hill, d474, d474media, d474designs, data the destroyer, d474th3d357r0y3r, datadesigns, datamedia, data, designer, design, designs, sound engineer, sound engineering, audio, audio production, graphic design, graphics, dj, dj data, dj d474, video, photo, photography, video work, videography, choreography, director, directing, acting, actor, writer, ghost writer, musician, artist, production, producer, beats, beat, rap, concert, rave, d474designs.webs.com, https://d474designs.webs.com, d474forex, that hill">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <!-- Google Fonts & FontAwesome -->
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;500;700&display=swap"
@@ -226,7 +243,7 @@
             overflow: hidden;
             position: relative;
             backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -236,6 +253,38 @@
             transform: translateY(-8px) scale(1.01);
             border-color: var(--accent-cyan);
             box-shadow: 0 10px 30px rgba(0, 243, 255, 0.15), 0 0 15px rgba(255, 0, 85, 0.1);
+        }
+
+        /* Dragging state */
+        body.admin-active .card {
+            cursor: grab;
+        }
+
+        .card.dragging {
+            opacity: 0.4;
+            border-color: var(--accent-magenta);
+        }
+
+        .drag-handle {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            display: none;
+            cursor: grab;
+            z-index: 10;
+        }
+
+        body.admin-active .drag-handle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .card-badge {
@@ -290,8 +339,28 @@
             font-size: 0.9rem;
             color: var(--text-dim);
             line-height: 1.5;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.8rem;
             flex-grow: 1;
+        }
+
+        .btn-read-more {
+            background: transparent;
+            border: none;
+            color: var(--accent-cyan);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            cursor: pointer;
+            text-align: left;
+            margin-bottom: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition-speed);
+        }
+
+        .btn-read-more:hover {
+            color: #fff;
+            text-shadow: 0 0 8px var(--accent-cyan);
         }
 
         .card-price {
@@ -545,45 +614,124 @@
             color: #fff;
         }
 
-        .btn-inline {
-            background: rgba(0, 243, 255, 0.15);
+        /* --- Product Details Modal Overlay --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 8, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: var(--panel-bg);
             border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 0.75rem;
+            border-radius: 16px;
+            max-width: 550px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.25);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--accent-cyan);
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
             cursor: pointer;
-            margin-top: 6px;
-            font-family: 'Orbitron', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
             transition: var(--transition-speed);
         }
 
-        .btn-inline:hover {
-            background: var(--accent-cyan);
-            color: #000;
+        .modal-close:hover {
+            background: var(--accent-magenta);
+            border-color: var(--accent-magenta);
         }
 
-        .fetch-status {
-            font-size: 0.8rem;
-            margin-top: 0.4rem;
+        .modal-img-wrap {
+            width: 100%;
+            height: 240px;
+            background: #10101a;
+        }
+
+        .modal-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-category {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .modal-desc {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 1rem;
+        }
+
+        .modal-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
             color: var(--accent-gold);
-            display: none;
-        }
-
-        .glitch-sub {
-            color: var(--accent-magenta);
-            animation: pulse 2s infinite alternate;
-        }
-
-        @keyframes pulse {
-            0% {
-                opacity: 0.7;
-            }
-
-            100% {
-                opacity: 1;
-                text-shadow: 0 0 10px var(--accent-magenta);
-            }
         }
 
         /* --- Footer Section --- */
@@ -736,6 +884,28 @@
         <!-- Dynamic Page Numbers Render Here -->
     </div>
 
+    <!-- Product Detail Pop-Up Modal -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeProductModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-img-wrap">
+                <img id="modal-img" src="" alt="Product Detail">
+            </div>
+            <div class="modal-body">
+                <div class="modal-category" id="modal-category">General</div>
+                <h2 class="modal-title" id="modal-title">Item Title</h2>
+                <div class="modal-desc" id="modal-desc">Full item description...</div>
+                <div class="modal-footer">
+                    <div class="modal-price" id="modal-price">$0.00</div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" id="modal-buy-btn" class="btn-buy"
+                        style="width: auto; padding: 10px 24px;">
+                        BUY NOW <i class="fa-solid fa-bolt" style="margin-left:6px;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer Section with Social Media Buttons -->
     <footer>
         <div class="footer-content">
@@ -744,28 +914,23 @@
             </div>
 
             <div class="social-links">
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn yt"
-                    title="YouTube">
+                <a href="https://youtube.com/@DataTheDestroyer" target="_blank" class="social-btn yt" title="YouTube">
                     <i class="fa-brands fa-youtube"></i>
                 </a>
-                <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-btn tw"
-                    title="X / Twitter">
-                    <i class="fa-brands fa-x-twitter"></i>
+                <a href="https://x.com/D474designs" target="_blank" class="social-btn tw" title="X / Twitter">
+                    <i class="fa-brands fa-twitter"></i>
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn ig"
+                <a href="https://instagram.com/D474th3D357R0Y3R" target="_blank" class="social-btn ig"
                     title="Instagram">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
-                <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="social-btn dc"
-                    title="Discord">
+                <a href="https://discord.gg/fkQCH6sbnc" target="_blank" class="social-btn dc" title="Discord">
                     <i class="fa-brands fa-discord"></i>
                 </a>
-                <a href="https://twitch.tv" target="_blank" rel="noopener noreferrer" class="social-btn twch"
-                    title="Twitch">
+                <a href="https://twitch.tv/D474th3D357R0Y3R" target="_blank" class="social-btn twch" title="Twitch">
                     <i class="fa-brands fa-twitch"></i>
                 </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn"
-                    title="GitHub">
+                <a href="https://github.com/D474designs" target="_blank" class="social-btn" title="GitHub">
                     <i class="fa-brands fa-github"></i>
                 </a>
             </div>
@@ -845,19 +1010,176 @@
 
     <script>
         const DEFAULT_INVENTORY = [
-            { id: 'd474-01', link: 'https: //buy.stripe.com/test_1', title: 'DJ D474 // Cyber Beats Vol. 1', category: 'Music', description: 'Lossless FLAC beat tapes with raw 808s and synthwave textures.', price: '$14.99', featured: true, image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-02', link: 'https: //buy.stripe.com/test_2', title: 'D474 Hologram Heavyweight Hoodie', category: 'Apparel', description: 'Limited run street-apparel with cybernetic reflective graphics.', price: '$65.00', featured: true, image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-03', link: 'https: //buy.stripe.com/test_3', title: 'Destroyer Neon Headset Stand', category: 'Hardware', description: 'Custom acrylic headphone desk mount with ambient RGB glowing base.', price: '$39.99', featured: true, image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-04', link: 'https: //buy.stripe.com/test_4', title: 'Cyberpunk Sound Effects Vault', category: 'Digital', description: 'Over 500+ royalty-free futuristic sfx, glitches, and impact sounds.', price: '$29.99', featured: true, image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-05', link: 'https: //buy.stripe.com/test_5', title: 'D474 Anodized Aluminum Keycap', category: 'Hardware', description: 'Custom CNC crafted keycap featuring the iconic D474 emblem.', price: '$19.99', featured: true, image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-06', link: 'https: //buy.stripe.com/test_6', title: 'DJ D474 // Underground Mixtape Tape', category: 'Music', description: 'Collector edition cassette tape loaded with synth-heavy rap instrumentals.', price: '$22.00', featured: true, image: 'https://images.unsplash.com/photo-1539375665275-f9de415ef9ac?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-07', link: 'https: //buy.stripe.com/test_7', title: 'Data Destroyer Desk Mat (Large)', category: 'Hardware', description: 'Ultra-smooth anti-slip stitching mat featuring custom PCB circuitry graphics.', price: '$34.50', featured: true, image: 'https://images.unsplash.com/photo-1616440342855-430b2019942a?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-08', link: 'https: //buy.stripe.com/test_8', title: 'D474 Cyber Visor Glasses', category: 'Apparel', description: 'LED animated futuristic glasses programed with equalizer presets.', price: '$45.00', featured: false, image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-09', link: 'https: //buy.stripe.com/test_9', title: '3D Cyberpunk Video Overlay Pack', category: 'Digital', description: '4K motion graphic loops and lower-thirds for livestreamers and video creators.', price: '$25.00', featured: false, image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-10', link: 'https: //buy.stripe.com/test_10', title: 'D474 Glow-in-the-Dark Snapback', category: 'Apparel', description: '3D embroidered snapback cap designed for late-night rave stages.', price: '$30.00', featured: false, image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-11', link: 'https: //buy.stripe.com/test_11', title: 'Synthetic Horizons Audio Plugin Presets', category: 'Digital', description: 'Preset expansion pack for Serum and Vital synthesizers.', price: '$18.00', featured: false, image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-12', link: 'https: //buy.stripe.com/test_12', title: 'D474 Insulated Metal Water Bottle', category: 'Hardware', description: 'Matte black double-walled vacuum bottle with laser-etched D474 branding.', price: '$28.00', featured: false, image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-13', link: 'https: //buy.stripe.com/test_13', title: 'Data The Destroyer // VIP Gaming Vault Access', category: 'Digital', description: 'Exclusive access to custom mod presets, UI tweaks, and direct strategy guides.', price: '$9.99', featured: false, image: 'https: //images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80' }
+            {
+                "id": "1789677786711",
+                "link": "https://go.magik.ly/ml/4dyhs/",
+                "title": "Campus Fleece™ Shrunken Hoodie",
+                "category": "Girls",
+                "description": "The Takeaway: Fave fleece, fresh silhouette\n\nMeet the new Campus It-girl: A pullover Hoodie with a perfectly curve-skimming and shrunken fit, made from the cozy fleece you know and love (and can’t live without).",
+                "price": "59.95",
+                "image": "https://www.victoriassecret.com/p/1000x1333/png/zz/26/06/22/02/112902136F02_OM_B.jpg",
+                "featured": false
+            },
+            {
+                "id": "1789677895012",
+                "link": "https://go.magik.ly/ml/4dyh8/",
+                "title": "Organic Cotton Micro-Rib Turtleneck",
+                "category": "Girls",
+                "description": "Grab a few, because the Organic Cotton Micro-Rib Turtleneck is a lightweight essential that means both comfort and style. Made from premium organic cotton, its micro rib adds a touch of texture to anything. Pair with high-waisted jeans and your favorite leather jacket for a timelessly cool look.",
+                "price": "24.90",
+                "image": "https://images.quince.com/3KTVigHkj9y0UMPmeuIk3o/70c71d3bb405da2d9ffab220b3c8e0f8/W-BLO-48-SEASPR_01_EDITED.jpg?w=1582&q=50&h=1978&fm=webp&reqOrigin=website-ssr",
+                "featured": false
+            },
+            {
+                "id": "1789677572008",
+                "link": "https://go.magik.ly/ml/4dyj4/",
+                "title": "100% Organic Cotton Long Sleeve Swing Tee",
+                "category": "Girls",
+                "description": "A timeless essential, the 100% Organic Cotton Jersey Long Sleeve Swing Tee is soft, breathable, and designed to last. Crafted from pure organic cotton, it offers a smooth, lightweight feel that’s comfortable on its own or layered. The silhouette is close at the shoulders and gently widens toward the hem, creating an easy fit that flatters the body without feeling restrictive. A classic round neckline and clean detailing give it a refined, versatile look—perfect for effortless everyday wear.",
+                "price": "21.00",
+                "image": "https://images.quince.com/779VDW8hxIEfL4hvxl2Rrl/d623c12f1307082c619f769b50b56b1a/W-LKT-128-CLAWHI-1677-EDITED.jpg?w=1582&q=50&h=1979&fm=webp&reqOrigin=website-ssr",
+                "featured": false
+            },
+            {
+                "id": "1789676645989",
+                "link": "https://go.magik.ly/ml/4dyqz/",
+                "title": "Beats - Powerbeats Pro 2 True Wireless Active Noise Canceling Earbuds - Jet Black",
+                "category": "Headphones",
+                "description": "Customers have good things to say about the exceptional sound quality, comfortable fit, and impressive battery life of these earbuds. Users also frequently praise the stylish design, attractive color options, and reliable connectivity.",
+                "price": "199.99",
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6558/6558860cv11d.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "featured": true
+            },
+            {
+                "id": "1789676811150",
+                "link": "https://go.magik.ly/ml/4dyqx/",
+                "title": "Insta360 - Ace Pro2 Xplorer Bundle Octa Edition - Dual Battery - Dark Gray",
+                "category": "Cameras",
+                "description": "Customers consistently note that the product delivers impressive video and photo quality. Users also frequently highlight how simple and intuitive the device is to operate. Overall, the performance of this product is highly regarded by those who have used it.",
+                "price": "449.99",
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/729a4458-9f17-4354-932c-75c3a8399783.png;maxHeight=1920;maxWidth=900?format=webp",
+                "featured": true
+            },
+            {
+                "id": "1789676731000",
+                "link": "https://go.magik.ly/ml/4dyqy/",
+                "title": "Garmin - DriveSmart 66 6\" GPS with Built-In Bluetooth, Map Updates and Traffic Updates - Black",
+                "category": "Car",
+                "description": "Customers praise the device for its exceptional ease of use, overall performance, and reliable GPS navigation. Users also appreciate the generous screen size, accurate directions, and convenient Wi-Fi map updates.",
+                "price": "199.99",
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6474/6474530_rd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "featured": false
+            },
+            {
+                "id": "1789677306237",
+                "link": "https://go.magik.ly/ml/4dykw/",
+                "title": "Ring - Outdoor Cam, Battery - White",
+                "category": "Cameras",
+                "description": "Customers have good things to say about the camera quality, ease of use, and impressive battery life of this product. Users also appreciate the reliable performance, straightforward installation process, and effective night vision capabilities.",
+                "price": "79.99",
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/ef51f593-e01c-43cc-8f6e-d62db01da69d.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "featured": false
+            },
+            {
+                "id": "1789676931371",
+                "link": "https://go.magik.ly/ml/4dyqw/",
+                "title": "Google - Home Speaker - Smart Speaker with Gemini For Home Voice Assistant and 360-Degree Sound",
+                "category": "Speakers",
+                "description": "Customers are enthusiastic about the impressive sound quality and the attractive design of this product. Users also frequently highlight how simple the setup process is and appreciate the convenient, compact size.",
+                "price": "99.99",
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/d4f909d9-0dbf-40de-b0f5-e6ec5d3364ea.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "featured": false
+            },
+            {
+                "id": "1789676304351",
+                "link": "https://go.magik.ly/ml/4dyr2/",
+                "title": "Bose - QuietComfort Ultra Headphones (2nd Gen) Wireless Noise Cancelling Over-Ear Headphones with Immersive Audio - Black",
+                "category": "Headphones",
+                "description": "Customers consistently note that these headphones deliver excellent sound quality and exceptional comfort, making them a popular choice for daily use. Users also frequently praise the premium design, lightweight build, and impressive battery life.",
+                "price": "$ 399.00",
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/ff3c67f3-39cb-4309-91f2-0ebe0cb7944b.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "featured": true
+            },
+            {
+                "id": "1789677082656",
+                "link": "https://go.magik.ly/ml/4dykz/",
+                "title": "Ninja - Refurbished Excellent - SLUSHi 5-in-1 Professional Frozen Drink Maker, 88 oz. Frozen Drink & Slushie Machine, 5 Preset Programs - Artic Blue & Gray",
+                "category": "Kitchen",
+                "description": "Enjoy the convenience of frozen drinks and slushies at home with NO ICE NEEDED. Exclusive RapidChill Technology gives you perfect frozen drinks every time. 88-oz Capacity makes 7+ servings per batch. Create hassle-free slushies, daiquiris, milkshakes, and much more with easy one-touch programs. The process is simple—from slush-making to clean-up.",
+                "price": "229.99",
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6e018dd7-2625-4f8d-98f5-75e03cc33a29.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "featured": true
+            },
+            {
+                "id": "1789677236480",
+                "link": "https://go.magik.ly/ml/4dykx/",
+                "title": "Roku - 50\" Class Select Series 4K QLED Smart RokuTV (2026)",
+                "category": "Televisions",
+                "description": "ustomers express satisfaction with the excellent picture quality and the straightforward installation process of this product. Users also appreciate its lightweight design, intuitive user interface, and ideal size for smaller rooms.",
+                "price": "249.99",
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/506ea560-cede-4639-bca1-1b88926b7d60.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "featured": true
+            },
+            {
+                "id": "1789676178693",
+                "link": "https://go.magik.ly/ml/4dyr3/",
+                "title": "Hisense - 65\" Class QD6 Series Hi-QLED 4K UHD HDR Smart Fire TV (2025)",
+                "category": "Televisions",
+                "description": "Customers often highlight the exceptional picture quality as the standout feature of this television, frequently praising its brightness and lightweight design.",
+                "price": "$ 399.99",
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/bc386fdf-67c3-4dc0-b232-fe15886cf21e.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "featured": true
+            },
+            {
+                "id": "1789676462174",
+                "link": "https://go.magik.ly/ml/4dyr1/",
+                "title": "LG - 5.0 Cu. Ft. High-Efficiency Stackable Front Load Washer with 6Motion Technology - White",
+                "category": "Laundry",
+                "description": "Customers value the excellent overall performance and quiet operation of this washer, which are the most frequently praised features. Users also appreciate the large capacity and intuitive design that make the machine easy to use on a daily basis.",
+                "price": "799.99",
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6529/6529900cv5d.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "featured": false
+            },
+            {
+                "id": "1789677453898",
+                "link": "https://go.magik.ly/ml/4dyjk/",
+                "title": "Eau de Parfum Discovery Set",
+                "category": "Girls",
+                "description": "Crafted by master perfumers using the world's finest ingredients for long-lasting scents that evolve beautifully over time. Thoughtfully formulated without parabens or sulfates and always cruelty-free, our perfumes are as ethical as they are unforgettable.",
+                "price": "20.00",
+                "image": "https://images.quince.com/3dvtOcPSjvNcrbBvJBPsgC/b9d5e0de4b69f29ff00243118179754c/FragranceSampler-621_EDITED.jpg?w=1600&q=50&h=2000&reqOrigin=website-ssr",
+                "featured": false
+            },
+            {
+                "id": "1789677707550",
+                "link": "https://go.magik.ly/ml/4dyiy/",
+                "title": "Charlotte Tilbury  Matte Revolution Hydrating Lipstick",
+                "category": "Girls",
+                "description": "A matte lipstick that features a long-lasting, buildable, and hydrating formula. Charlotte's hydrating formula is enriched with lip-loving ingredients to protect and soothe lips for a cashmere matte finish with 10 hour wear. The unique, square-angled tip mimics the shape of a lip brush for a precise application.",
+                "price": "37.00",
+                "image": "https://www.sephora.com/productimages/sku/s2309383-av-7202601151030462390800-zoom.jpg?imwidth=1224",
+                "featured": false
+            },
+            {
+                "id": "1789676994440",
+                "link": "https://go.magik.ly/ml/4dyl5/",
+                "title": "Dyson - V15 Detect Extra Cordless Vacuum with 10 accessories - Yellow/Nickel",
+                "category": "Home",
+                "description": "he Dyson V15 Detect Extra is engineered with the power, intelligence, versatility, and run time to deep clean your whole home. Dyson illumination reveals invisible dust on hard floors. A piezo sensor intelligently optimizes power and run time based on the debris picked up, reporting it all on the LCD screen.³ The de-tangling Digital Motorbar cleaner head deep cleans carpets and hard floors without tangles and adapts suction power to floor type. Its versatile cordless format transforms into a handled vacuum with one click so you can clean up high, down low, and everywhere in between. Comes with a 2-year warranty and lifetime Dyson support.",
+                "price": "808.00",
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/73331ae5-d4d4-459e-9d3b-e50cac768e3d.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "featured": false
+            },
+            {
+                "id": "1789676565187",
+                "link": "https://go.magik.ly/ml/4dyr0/",
+                "title": "BISSELL - Little Green Mini Portable Carpet Cleaner - Tea",
+                "category": "Home",
+                "description": "Customers recognize the exceptional cleaning performance of this product, with many users describing its effectiveness as magical. The device is highly praised for its portability and convenient design, making it a handy tool for various tasks. Additionally, users appreciate the strong suction power it provides.",
+                "price": "89.99",
+                "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/0add0f53-881b-4255-b1e2-d69e76a96a8b.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                "featured": true
+            }
         ];
 
         let inventory = [];
@@ -865,14 +1187,17 @@
         let currentPage = 1;
         let itemsPerPage = 10;
         let isAdmin = false;
+        let draggedItemIndex = null;
+
+        const MAX_DESC_LENGTH = 100;
 
         window.addEventListener('DOMContentLoaded', () => {
             /*
             const saved = localStorage.getItem('d474_inventory');
             if (saved) {
-            try { inventory = JSON.parse(saved); } catch (e) { inventory = DEFAULT_INVENTORY; }
+                try { inventory = JSON.parse(saved); } catch (e) { inventory = DEFAULT_INVENTORY; }
             } else {
-            inventory = DEFAULT_INVENTORY;
+                inventory = DEFAULT_INVENTORY;
             }
             */
 
@@ -881,13 +1206,6 @@
             renderFeatured();
             renderCategories();
             renderProducts();
-            checkUrlQueryParams();
-        });
-
-        window.addEventListener('pagehide', () => {
-            if (inventory && inventory.length > 0) {
-                localStorage.setItem('d474_inventory', JSON.stringify(inventory));
-            }
         });
 
         function saveInventory() {
@@ -937,20 +1255,6 @@
             });
         }
 
-        function toggleFeatured(id) {
-            const item = inventory.find(i => i.id === id);
-            if (!item) return;
-
-            const currentFeaturedCount = inventory.filter(i => i.featured).length;
-            if (!item.featured && currentFeaturedCount >= 7) {
-                alert('You can only feature up to 7 items in the showcase.');
-                return;
-            }
-
-            item.featured = !item.featured;
-            saveInventory();
-        }
-
         function renderCategories() {
             const categoryContainer = document.getElementById('category-pills');
             const categories = ['All', ...new Set(inventory.map(item => item.category || 'General'))];
@@ -996,9 +1300,19 @@
             const paginatedItems = filtered.slice(startIndex, startIndex + itemsPerPage);
 
             paginatedItems.forEach((item) => {
+                const globalIndex = inventory.findIndex(i => i.id === item.id);
+                const isLongDesc = (item.description || '').length > MAX_DESC_LENGTH;
+                const truncatedDesc = isLongDesc
+                    ? item.description.substring(0, MAX_DESC_LENGTH) + '...'
+                    : (item.description || '');
+
                 const card = document.createElement('div');
                 card.className = 'card';
+                card.setAttribute('draggable', isAdmin ? 'true' : 'false');
+                card.dataset.index = globalIndex;
+
                 card.innerHTML = `
+                    <div class="drag-handle"><i class="fa-solid fa-grip-lines"></i> Drag</div>
                     <div class="card-badge">${item.category || 'General'}</div>
                     <div class="card-admin-actions">
                         <button class="btn-admin-icon ${item.featured ? 'featured-active' : ''}" title="Toggle Featured Showcase" onclick="toggleFeatured('${item.id}')"><i class="fa-solid fa-star"></i></button>
@@ -1011,7 +1325,8 @@
                     <div class="card-body">
                         <div>
                             <h3 class="card-title">${item.title}</h3>
-                            <p class="card-desc">${item.description || ''}</p>
+                            <p class="card-desc">${truncatedDesc}</p>
+                            ${isLongDesc ? `<button class="btn-read-more" onclick="openProductModal('${item.id}')">Read More <i class="fa-solid fa-arrow-right"></i></button>` : ''}
                         </div>
                         <div>
                             <div class="card-price">${item.price}</div>
@@ -1021,11 +1336,70 @@
                         </div>
                     </div>
                 `;
+
+                if (isAdmin) {
+                    addDragAndDropListeners(card);
+                }
+
                 grid.appendChild(card);
             });
 
             renderPagination(totalPages);
         }
+
+        /* --- Drag and Drop Reordering Handlers --- */
+        function addDragAndDropListeners(card) {
+            card.addEventListener('dragstart', (e) => {
+                draggedItemIndex = parseInt(card.dataset.index, 10);
+                card.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+            });
+
+            card.addEventListener('dragend', () => {
+                card.classList.remove('dragging');
+                draggedItemIndex = null;
+            });
+
+            card.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
+            });
+
+            card.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const targetIndex = parseInt(card.dataset.index, 10);
+                if (draggedItemIndex !== null && draggedItemIndex !== targetIndex) {
+                    const movedItem = inventory.splice(draggedItemIndex, 1)[0];
+                    inventory.splice(targetIndex, 0, movedItem);
+                    saveInventory();
+                }
+            });
+        }
+
+        /* --- Product Modal Pop-Up Logic --- */
+        function openProductModal(id) {
+            const item = inventory.find(i => i.id === id);
+            if (!item) return;
+
+            document.getElementById('modal-img').src = item.image || 'https://via.placeholder.com/600x400/10101a/00f3ff?text=D474+STORE';
+            document.getElementById('modal-category').innerText = item.category || 'General';
+            document.getElementById('modal-title').innerText = item.title;
+            document.getElementById('modal-desc').innerText = item.description || 'No description provided.';
+            document.getElementById('modal-price').innerText = item.price;
+            document.getElementById('modal-buy-btn').href = item.link;
+
+            document.getElementById('product-modal').classList.add('active');
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.remove('active');
+        }
+
+        document.getElementById('product-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'product-modal') {
+                closeProductModal();
+            }
+        });
 
         function renderPagination(totalPages) {
             const paginationBar = document.getElementById('pagination-bar');
@@ -1062,6 +1436,21 @@
             document.getElementById('admin-status').innerText = isAdmin ? 'Admin Active' : 'Admin Off';
             document.getElementById('open-panel-btn').style.display = isAdmin ? 'inline-flex' : 'none';
             document.getElementById('export-btn').style.display = isAdmin ? 'inline-flex' : 'none';
+            renderProducts();
+        }
+
+        function toggleFeatured(id) {
+            const item = inventory.find(i => i.id === id);
+            if (!item) return;
+
+            const currentFeaturedCount = inventory.filter(i => i.featured).length;
+            if (!item.featured && currentFeaturedCount >= 7) {
+                alert('You can only feature up to 7 items in the showcase.');
+                return;
+            }
+
+            item.featured = !item.featured;
+            saveInventory();
         }
 
         function openAdminPanel(editId = null) {
@@ -1092,123 +1481,6 @@
 
         function closeAdminPanel() {
             document.getElementById('admin-panel').classList.remove('open');
-        }
-
-        async function checkUrlQueryParams() {
-            const params = new URLSearchParams(window.location.search);
-            const addLink = params.get('addLink') || params.get('url') || params.get('link');
-
-            if (addLink) {
-                if (!isAdmin) toggleAdminMode();
-                openAdminPanel();
-
-                document.getElementById('prod-link').value = addLink;
-
-                if (params.get('title')) document.getElementById('prod-title').value = params.get('title');
-                if (params.get('category')) document.getElementById('prod-category').value = params.get('category');
-                if (params.get('price')) document.getElementById('prod-price').value = params.get('price');
-                if (params.get('desc')) document.getElementById('prod-desc').value = params.get('desc');
-                if (params.get('img')) document.getElementById('prod-img').value = params.get('img');
-
-                await autoFetchMetadata(addLink);
-            }
-        }
-
-        async function fetchHtmlWithProxies(targetUrl) {
-            const proxies = [
-                url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`,
-                url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
-                url => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`
-            ];
-
-            for (const getProxyUrl of proxies) {
-                try {
-                    const proxyUrl = getProxyUrl(targetUrl);
-                    const res = await fetch(proxyUrl);
-                    if (!res.ok) continue;
-
-                    let htmlText = '';
-                    if (proxyUrl.includes('allorigins')) {
-                        const json = await res.json();
-                        htmlText = json.contents;
-                    } else {
-                        htmlText = await res.text();
-                    }
-
-                    if (htmlText && htmlText.length > 50) {
-                        return htmlText;
-                    }
-                } catch (e) {
-                    console.warn('Proxy failed, trying next...', e);
-                }
-            }
-            throw new Error('All CORS proxies failed to fetch target URL metadata.');
-        }
-
-        async function autoFetchMetadata(url) {
-            if (!url || !url.startsWith('http')) return;
-            const statusEl = document.getElementById('fetch-status');
-            statusEl.style.display = 'block';
-            statusEl.style.color = 'var(--accent-gold)';
-            statusEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Parsing link metadata...';
-
-            try {
-                const htmlString = await fetchHtmlWithProxies(url);
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(htmlString, 'text/html');
-
-                const title =
-                    doc.querySelector('meta[property="og:title"]')?.content ||
-                    doc.querySelector('meta[name="twitter:title"]')?.content ||
-                    doc.querySelector('title')?.innerText || '';
-
-                const description =
-                    doc.querySelector('meta[property="og:description"]')?.content ||
-                    doc.querySelector('meta[name="twitter:description"]')?.content ||
-                    doc.querySelector('meta[name="description"]')?.content || '';
-
-                let image =
-                    doc.querySelector('meta[property="og:image"]')?.content ||
-                    doc.querySelector('meta[name="twitter:image"]')?.content || '';
-
-                if (image && !image.startsWith('http')) {
-                    try { image = new URL(image, url).href; } catch (e) { }
-                }
-
-                let price = '';
-                const ogPrice = doc.querySelector('meta[property="product:price:amount"]')?.content ||
-                    doc.querySelector('meta[property="og:price:amount"]')?.content;
-                const ogCurrency = doc.querySelector('meta[property="product:price:currency"]')?.content ||
-                    doc.querySelector('meta[property="og:price:currency"]')?.content || '$';
-
-                if (ogPrice) {
-                    price = `${ogCurrency}${ogPrice}`;
-                } else {
-                    const scripts = doc.querySelectorAll('script[type="application/ld+json"]');
-                    for (const script of scripts) {
-                        try {
-                            const data = JSON.parse(script.innerText);
-                            const offer = data.offers || (Array.isArray(data) ? data[0]?.offers : null);
-                            if (offer && offer.price) {
-                                price = `${offer.priceCurrency || '$'}${offer.price}`;
-                                break;
-                            }
-                        } catch (e) { }
-                    }
-                }
-
-                if (title && !document.getElementById('prod-title').value) document.getElementById('prod-title').value = title;
-                if (description && !document.getElementById('prod-desc').value) document.getElementById('prod-desc').value = description;
-                if (image && !document.getElementById('prod-img').value) document.getElementById('prod-img').value = image;
-                if (price && !document.getElementById('prod-price').value) document.getElementById('prod-price').value = price;
-
-                statusEl.style.color = 'var(--accent-cyan)';
-                statusEl.innerHTML = '<i class="fa-solid fa-check"></i> Metadata successfully extracted!';
-            } catch (err) {
-                console.error(err);
-                statusEl.style.color = 'var(--accent-magenta)';
-                statusEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Could not auto-read link. Please fill manually.';
-            }
         }
 
         function handleFormSubmit(e) {
