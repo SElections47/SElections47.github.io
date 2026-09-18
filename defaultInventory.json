@@ -1,18 +1,18 @@
         const DEFAULT_INVENTORY = [
             { id: 'd474-01', link: 'https: //buy.stripe.com/test_1', title: 'DJ D474 // Cyber Beats Vol. 1', category: 'Music', description: 'Lossless FLAC beat tapes with raw 808s and synthwave textures.', price: '$14.99', featured: true, image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-02', link: 'https: //buy.stripe.com/test_2', title: 'D474 Hologram Heavyweight Hoodie', category: 'Apparel', description: 'Limited run street-apparel with cybernetic reflective graphics.', price: '$65.00', featured: true, image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-03', link: 'https: //buy.stripe.com/test_3', title: 'Destroyer Neon Headset Stand', category: 'Hardware', description: 'Custom acrylic headphone desk mount with ambient RGB glowing base.', price: '$39.99', featured: true, image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-04', link: 'https: //buy.stripe.com/test_4', title: 'Cyberpunk Sound Effects Vault', category: 'Digital', description: 'Over 500+ royalty-free futuristic sfx, glitches, and impact sounds.', price: '$29.99', featured: true, image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-05', link: 'https: //buy.stripe.com/test_5', title: 'D474 Anodized Aluminum Keycap', category: 'Hardware', description: 'Custom CNC crafted keycap featuring the iconic D474 emblem.', price: '$19.99', featured: true, image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-06', link: 'https: //buy.stripe.com/test_6', title: 'DJ D474 // Underground Mixtape Tape', category: 'Music', description: 'Collector edition cassette tape loaded with synth-heavy rap instrumentals.', price: '$22.00', featured: true, image: 'https://images.unsplash.com/photo-1539375665275-f9de415ef9ac?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-07', link: 'https: //buy.stripe.com/test_7', title: 'Data Destroyer Desk Mat (Large)', category: 'Hardware', description: 'Ultra-smooth anti-slip stitching mat featuring custom PCB circuitry graphics.', price: '$34.50', featured: true, image: 'https://images.unsplash.com/photo-1616440342855-430b2019942a?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-08', link: 'https: //buy.stripe.com/test_8', title: 'D474 Cyber Visor Glasses', category: 'Apparel', description: 'LED animated futuristic glasses programed with equalizer presets.', price: '$45.00', featured: false, image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-09', link: 'https: //buy.stripe.com/test_9', title: '3D Cyberpunk Video Overlay Pack', category: 'Digital', description: '4K motion graphic loops and lower-thirds for livestreamers and video creators.', price: '$25.00', featured: false, image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-10', link: 'https: //buy.stripe.com/test_10', title: 'D474 Glow-in-the-Dark Snapback', category: 'Apparel', description: '3D embroidered snapback cap designed for late-night rave stages.', price: '$30.00', featured: false, image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-11', link: 'https: //buy.stripe.com/test_11', title: 'Synthetic Horizons Audio Plugin Presets', category: 'Digital', description: 'Preset expansion pack for Serum and Vital synthesizers.', price: '$18.00', featured: false, image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-12', link: 'https: //buy.stripe.com/test_12', title: 'D474 Insulated Metal Water Bottle', category: 'Hardware', description: 'Matte black double-walled vacuum bottle with laser-etched D474 branding.', price: '$28.00', featured: false, image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=800&q=80' },
-            { id: 'd474-13', link: 'https: //buy.stripe.com/test_13', title: 'Data The Destroyer // VIP Gaming Vault Access', category: 'Digital', description: 'Exclusive access to custom mod presets, UI tweaks, and direct strategy guides.', price: '$9.99', featured: false, image: 'https: //images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80' }
-        ];
+                { id: 'd474-02', link: 'https: //buy.stripe.com/test_2', title: 'D474 Hologram Heavyweight Hoodie', category: 'Apparel', description: 'Limited run street-apparel with cybernetic reflective graphics.', price: '$65.00', featured: true, image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80' },
+                    { id: 'd474-03', link: 'https: //buy.stripe.com/test_3', title: 'Destroyer Neon Headset Stand', category: 'Hardware', description: 'Custom acrylic headphone desk mount with ambient RGB glowing base.', price: '$39.99', featured: true, image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80' },
+                        { id: 'd474-04', link: 'https: //buy.stripe.com/test_4', title: 'Cyberpunk Sound Effects Vault', category: 'Digital', description: 'Over 500+ royalty-free futuristic sfx, glitches, and impact sounds.', price: '$29.99', featured: true, image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80' },
+                            { id: 'd474-05', link: 'https: //buy.stripe.com/test_5', title: 'D474 Anodized Aluminum Keycap', category: 'Hardware', description: 'Custom CNC crafted keycap featuring the iconic D474 emblem.', price: '$19.99', featured: true, image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80' },
+                                { id: 'd474-06', link: 'https: //buy.stripe.com/test_6', title: 'DJ D474 // Underground Mixtape Tape', category: 'Music', description: 'Collector edition cassette tape loaded with synth-heavy rap instrumentals.', price: '$22.00', featured: true, image: 'https://images.unsplash.com/photo-1539375665275-f9de415ef9ac?auto=format&fit=crop&w=800&q=80' },
+                                    { id: 'd474-07', link: 'https: //buy.stripe.com/test_7', title: 'Data Destroyer Desk Mat (Large)', category: 'Hardware', description: 'Ultra-smooth anti-slip stitching mat featuring custom PCB circuitry graphics.', price: '$34.50', featured: true, image: 'https://images.unsplash.com/photo-1616440342855-430b2019942a?auto=format&fit=crop&w=800&q=80' },
+                                        { id: 'd474-08', link: 'https: //buy.stripe.com/test_8', title: 'D474 Cyber Visor Glasses', category: 'Apparel', description: 'LED animated futuristic glasses programed with equalizer presets.', price: '$45.00', featured: false, image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80' },
+                                            { id: 'd474-09', link: 'https: //buy.stripe.com/test_9', title: '3D Cyberpunk Video Overlay Pack', category: 'Digital', description: '4K motion graphic loops and lower-thirds for livestreamers and video creators.', price: '$25.00', featured: false, image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80' },
+                                                { id: 'd474-10', link: 'https: //buy.stripe.com/test_10', title: 'D474 Glow-in-the-Dark Snapback', category: 'Apparel', description: '3D embroidered snapback cap designed for late-night rave stages.', price: '$30.00', featured: false, image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80' },
+                                                    { id: 'd474-11', link: 'https: //buy.stripe.com/test_11', title: 'Synthetic Horizons Audio Plugin Presets', category: 'Digital', description: 'Preset expansion pack for Serum and Vital synthesizers.', price: '$18.00', featured: false, image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80' },
+                                                        { id: 'd474-12', link: 'https: //buy.stripe.com/test_12', title: 'D474 Insulated Metal Water Bottle', category: 'Hardware', description: 'Matte black double-walled vacuum bottle with laser-etched D474 branding.', price: '$28.00', featured: false, image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=800&q=80' },
+                                                            { id: 'd474-13', link: 'https: //buy.stripe.com/test_13', title: 'Data The Destroyer // VIP Gaming Vault Access', category: 'Digital', description: 'Exclusive access to custom mod presets, UI tweaks, and direct strategy guides.', price: '$9.99', featured: false, image: 'https: //images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80' }
+                                                            ];
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +22,8 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEG38QZQPY"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
+        function gtag() { dataLayer.push(arguments);
+                                                            }
         gtag('js', new Date());
 
         gtag('config', 'G-TEG38QZQPY');
@@ -46,9 +47,27 @@
 
     <!-- Header Section -->
     <header>
+        <button class="bookmark-btn" id="bookmark-btn" onclick="triggerBookmark()" title="Bookmark Store">
+            <i class="fa-solid fa-bookmark"></i>
+        </button>
         <h1 class="brand-title">SElections47</h1>
-        <p class="brand-subtitle">Data The Destroyer <span class="glitch-sub">//</span> DJ D474 The Rapper</p>
+        <p class="brand-subtitle">Data The Destroyer <span class="glitch-sub"> //</span> DJ D474 The Rapper</p>
     </header>
+
+    <!-- Featured Showcase Carousel -->
+    <section class="featured-section" id="featured-section" style="display: none;">
+        <h2 class="section-title"><i class="fa-solid fa-star"></i> Featured Showcase <span
+                id="featured-count">0</span></h2>
+        <div class="carousel-wrapper">
+            <button class="carousel-nav-btn prev" onclick="scrollCarousel(-300)"><i
+                    class="fa-solid fa-chevron-left"></i></button>
+            <div class="featured-carousel" id="featured-carousel">
+                <!-- Featured items render here -->
+            </div>
+            <button class="carousel-nav-btn next" onclick="scrollCarousel(300)"><i
+                    class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </section>
 
         let inventory = [];
         let selectedCategory = 'All';
@@ -60,7 +79,7 @@
         const MAX_DESC_LENGTH = 100;
 
         window.addEventListener('DOMContentLoaded', () => {
-            /*
+                                                                /*
             const saved = localStorage.getItem('d474_inventory');
             if (saved) {
                 try { inventory = JSON.parse(saved); } catch (e) { inventory = DEFAULT_INVENTORY; }
@@ -74,7 +93,7 @@
             renderFeatured();
             renderCategories();
             renderProducts();
-        });
+                                                            });
 
     <!-- Footer Section with Social Media Buttons -->
     <footer>
