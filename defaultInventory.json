@@ -56,7 +56,7 @@
     <div class="tab-panel active" id="tab-store">
         <!-- Featured Showcase Carousel -->
         <section class="featured-section" id="featured-section" style="display: none;">
-            <h2 class="section-title"><i class="fa-solid fa-star"></i> Featured Showcase </h2>
+            <h2 class="section-title"><i class="fa-solid fa-star"></i> Featured Showcase <span display="none" id="featured-count">0</span></h2>
             <div class="carousel-wrapper">
                 <button class="carousel-nav-btn prev" onclick="scrollCarousel(-300)"><i class="fa-solid fa-chevron-left"></i></button>
                 <div class="featured-carousel" id="featured-carousel">
@@ -67,7 +67,7 @@
         </section>
 
         window.addEventListener('DOMContentLoaded', () => {
-            /*
+                                                                /*
             const savedInventory = localStorage.getItem('d474_inventory');
             if (savedInventory) {
                 try { inventory = JSON.parse(savedInventory); } catch(e) { inventory = DEFAULT_INVENTORY; }
@@ -83,7 +83,7 @@
 
             inventory = DEFAULT_INVENTORY;
 
-            
+
     <!-- Footer Section -->
     <footer>
         <div class="footer-content">
